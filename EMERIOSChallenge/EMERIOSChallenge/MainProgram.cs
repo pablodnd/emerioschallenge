@@ -45,33 +45,33 @@ namespace EMERIOSChallenge
             List<string> diagonals = _serviceMatrix.ExtractDiagonal(rows, false);
             List<string> diagonalsReverse = _serviceMatrix.ExtractDiagonal(rows, true);
 
-            List<Tuple<char, int>> ocurrencias = new List<Tuple<char, int>>();
+            List<Tuple<char, int>> ocurrencies = new List<Tuple<char, int>>();
 
             foreach (var row in rows)
             {
-                var resultado = this._stringHelper.GetRepetitiveChars(row);
-                ocurrencias.Add(resultado);
+                Tuple<char, int> result = this._stringHelper.GetRepetitiveChars(row);
+                ocurrencies.Add(result);
             }
 
             foreach (var col in cols)
             {
-                var resultado = this._stringHelper.GetRepetitiveChars(col);
-                ocurrencias.Add(resultado);
+                Tuple<char, int> result = this._stringHelper.GetRepetitiveChars(col);
+                ocurrencies.Add(result);
             }
 
             foreach (var diagonal in diagonals)
             {
-                var resultado = this._stringHelper.GetRepetitiveChars(diagonal);
-                ocurrencias.Add(resultado);
+                Tuple<char, int> result = this._stringHelper.GetRepetitiveChars(diagonal);
+                ocurrencies.Add(result);
             }
 
             foreach (var diagonal in diagonalsReverse)
             {
-                var resultado = this._stringHelper.GetRepetitiveChars(diagonal);
-                ocurrencias.Add(resultado);
+                Tuple<char, int> result = this._stringHelper.GetRepetitiveChars(diagonal);
+                ocurrencies.Add(result);
             }
 
-            Tuple<char, int> mayor = ocurrencias.OrderByDescending(t => t.Item2).First();
+            Tuple<char, int> mayor = ocurrencies.OrderByDescending(t => t.Item2).First();
             stopwatch.Stop();
 
             Console.WriteLine($"Result completed in {stopwatch.Elapsed.TotalSeconds} seconds");

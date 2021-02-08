@@ -7,17 +7,15 @@ namespace EMERIOSChallenge
     public class ServiceMatrix : IServiceMatrix
     {
         public ServiceMatrix()
-        {
-
-        }
+        { }
 
         public List<string> ExtractColumns(List<string> rows, string matrix)
         {
             List<string> cols = new List<string>();
-            // Modelo basado en strings
-            var primeraFila = matrix.Split(new string[] { "\r\n" }, StringSplitOptions.None).First().Split(',');
-            // lleno las columnas
-            for (int i = 0; i < primeraFila.Length; i++)
+       
+            var firstRow = matrix.Split(new string[] { "\r\n" }, StringSplitOptions.None).First().Split(',');
+        
+            for (int i = 0; i < firstRow.Length; i++)
             {
                 var elementos = rows.Select(f => f.ElementAt(i));
                 cols.Add(string.Join(string.Empty, elementos));
@@ -40,9 +38,12 @@ namespace EMERIOSChallenge
                 while (rowNumber < rowsNumber - rowCicle)
                 {
                     if (reverse)
-                        diagonal = diagonal + rows[rowNumber].Reverse().ElementAt(rowNumber - totalCicles + rowCicle);
+                        diagonal = diagonal + rows[rowNumber]
+                            .Reverse()
+                            .ElementAt(rowNumber - totalCicles + rowCicle);
                     else
-                        diagonal = diagonal + rows[rowNumber].ElementAt(rowNumber - totalCicles + rowCicle);
+                        diagonal = diagonal + rows[rowNumber]
+                            .ElementAt(rowNumber - totalCicles + rowCicle);
 
                     rowNumber++;
                 }

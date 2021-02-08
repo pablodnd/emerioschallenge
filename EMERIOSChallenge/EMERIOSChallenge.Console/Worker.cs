@@ -16,7 +16,6 @@ namespace EMERIOSChallenge.Program
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             this._mainProgram.Execute();
-            //_applicationLifeTime.StopApplication();
         }
     }
 }
