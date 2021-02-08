@@ -71,11 +71,11 @@ namespace EMERIOSChallenge
                 ocurrencies.Add(result);
             }
 
-            Tuple<char, int> mayor = ocurrencies.OrderByDescending(t => t.Item2).First();
+            Tuple<char, int> max = ocurrencies.OrderByDescending(t => t.Item2).First();
             stopwatch.Stop();
 
             Console.WriteLine($"Result completed in {stopwatch.Elapsed.TotalSeconds} seconds");
-            Console.WriteLine($"Adyacency found: char: {mayor.Item1} - {mayor.Item2} times");
+            Console.WriteLine($"Adyacency found: char: {max.Item1} - {max.Item2} times");
         }
     }
 }
