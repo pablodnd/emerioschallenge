@@ -75,7 +75,7 @@ namespace EMERIOSChallenge
             stopwatch.Stop();
 
             Console.WriteLine($"Result completed in {stopwatch.Elapsed.TotalSeconds} seconds");
-            Console.WriteLine($"Adyacency found: char: {max.Item1} - {max.Item2} times");
+            Console.WriteLine($"Adyacency found: char: {max.Item1} - {max.Item2} times - chain: {this._stringHelper.GetChainFromAdyacensy(max.Item1, max.Item2)}");
         }
     }
 }

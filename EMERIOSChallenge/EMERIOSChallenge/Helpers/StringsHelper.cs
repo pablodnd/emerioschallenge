@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace EMERIOSChallenge
 {
@@ -34,6 +35,19 @@ namespace EMERIOSChallenge
             }
 
             return new Tuple<char, int>(occurence, count);
+        }
+
+        public string GetChainFromAdyacensy(char input, int count)
+        {
+            StringBuilder result = new StringBuilder();
+
+            while (count > 0)
+            {
+                result.Append($"{input},");
+                count--;
+            }
+
+            return result.ToString().TrimEnd(',');
         }
     }
 }
