@@ -1,13 +1,16 @@
 # emerioschallenge
 
 ## Caracteristicas
+
 * Desarrollado como un proyecto de NET CORE 3.1
 * Tiene un proyecto NET STANDARD para logica
 * Tiene un proyecto NET CORE de consola (Service worker)
 * Tiene un proyecto de TEST para mostar uso de Moq, XUnit y FluentAssertions
 
 ## Modo de uso
-El programa lee un archivo txt de un path que hay que especificar en
+
+El programa lee un archivo txt de un path que hay que especificar en el archivo appsettings.json de la solucion
+
 ```json
 {
     "Configuracion":{
