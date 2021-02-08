@@ -4,6 +4,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace EMERIOSChallenge.Program
 {
+    /// <summary>
+    /// Worker service
+    /// </summary>
     public class Worker : BackgroundService
     {
         private readonly IMainProgram _mainProgram;

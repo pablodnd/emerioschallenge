@@ -12,9 +12,9 @@ namespace EMERIOSChallenge
         public List<string> ExtractColumns(List<string> rows, string matrix)
         {
             List<string> cols = new List<string>();
-       
+
             var firstRow = matrix.Split(new string[] { "\r\n" }, StringSplitOptions.None).First().Split(',');
-        
+
             for (int i = 0; i < firstRow.Length; i++)
             {
                 var elementos = rows.Select(f => f.ElementAt(i));
@@ -24,46 +24,65 @@ namespace EMERIOSChallenge
             return cols;
         }
 
-        public List<string> ExtractDiagonal(List<string> rows, bool reverse)
+        public List<string> ExtractDiagonal(List<string> rows, bool reverse, string matrix)
         {
             List<string> diagonals = new List<string>();
-            int rowsNumber = rows.Count;
+            int colsCount = ExtractColumns(rows, matrix).Count;
+            int rowsCount = rows.Count;
             string diagonal = string.Empty;
-            int rowCicle = 0;
-            int rowNumber = 0;
-            int totalCicles = 0;
+            int row = 0;
+            int colIndex;
+            int cicle = 0;
+            int expectedTotalCicles = colsCount + rowsCount - 1;
 
-            while (rowCicle < rowsNumber && totalCicles < rowsNumber)
+            while (cicle < rowsCount)
             {
-                while (rowNumber < rowsNumber - rowCicle)
+                for (colIndex = cicle; colIndex < colsCount && row < (rowsCount - cicle); colIndex++)
                 {
                     if (reverse)
-                        diagonal = diagonal + rows[rowNumber]
-                            .Reverse()
-                            .ElementAt(rowNumber - totalCicles + rowCicle);
+                    {
+                        diagonal = diagonal + rows[row].Reverse().ElementAt(colIndex);
+                    }
                     else
-                        diagonal = diagonal + rows[rowNumber]
-                            .ElementAt(rowNumber - totalCicles + rowCicle);
+                    {
+                        diagonal = diagonal + rows[row].ElementAt(colIndex);
+                    }
 
-                    rowNumber++;
+                    row++;
                 }
 
                 diagonals.Add(diagonal);
                 diagonal = string.Empty;
+                cicle++;
+                expectedTotalCicles--;
+                row = 0;
+            }
 
-                rowCicle++;
+            // reset cicle
+            cicle = 0;
 
-                if (rowCicle == rowsNumber || totalCicles >= 1)
+            while (cicle < rowsCount - 1)
+            {
+                // go to next row
+                row = cicle + 1;
+                while (row < rowsCount)
                 {
-                    totalCicles++;
-                    rowNumber = totalCicles;
-                    rowCicle = 0;
+                    if (reverse)
+                    {
+                        diagonal = diagonal + rows[row].Reverse().ElementAt(row - cicle - 1);
+                    }
+                    else
+                    {
+                        diagonal = diagonal + rows[row].ElementAt(row - cicle - 1);
+                    }
+                    
+                    row++;
+                
                 }
-                else
-                {
-                    if (totalCicles < 1)
-                        rowNumber = 0;
-                }
+
+                diagonals.Add(diagonal);
+                diagonal = string.Empty;
+                cicle++;
             }
 
             return diagonals;

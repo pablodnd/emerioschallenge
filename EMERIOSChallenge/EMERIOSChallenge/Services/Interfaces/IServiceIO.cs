@@ -1,7 +1,7 @@
 ﻿namespace EMERIOSChallenge
 {
     /// <summary>
-    /// Wrapper para poder testear IO
+    /// Wrapper
     /// </summary>
     public interface IServiceIO
     {

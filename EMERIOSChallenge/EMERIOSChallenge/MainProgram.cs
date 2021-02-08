@@ -42,8 +42,8 @@ namespace EMERIOSChallenge
 
             List<string> rows = _serviceMatrix.ExtractRows(matrix);
             List<string> cols = _serviceMatrix.ExtractColumns(rows, matrix);
-            List<string> diagonals = _serviceMatrix.ExtractDiagonal(rows, false);
-            List<string> diagonalsReverse = _serviceMatrix.ExtractDiagonal(rows, true);
+            List<string> diagonals = _serviceMatrix.ExtractDiagonal(rows, false, matrix);
+            List<string> diagonalsReverse = _serviceMatrix.ExtractDiagonal(rows, true, matrix);
 
             List<Tuple<char, int>> ocurrencies = new List<Tuple<char, int>>();
 

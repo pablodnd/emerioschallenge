@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace EMERIOSChallenge.Program
 {
+    /// <summary>
+    /// Program
+    /// </summary>
     public static class Program
     {
         public static IConfiguration config { get; } = new ConfigurationBuilder()
