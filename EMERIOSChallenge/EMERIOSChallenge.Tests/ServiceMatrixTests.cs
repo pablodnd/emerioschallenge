@@ -41,6 +41,23 @@ namespace EMERIOSChallenge.Tests
         }
 
         [Fact]
+        public void ServiceMatrix_ExtractDiagonal_Reverse()
+        {
+            //arrange
+            string matrix = Fakes.GetDefaultMatrix();
+            List<string> rows = Fakes.GetDefaultListOfRows();
+            int expectedDiagonals = 9;
+
+            //act
+            ServiceMatrix service = new ServiceMatrix();
+            List<string> result = service.ExtractDiagonal(rows, true, matrix);
+
+            //asserts
+            result.Should().NotBeNull();
+            result.Should().HaveCount(expectedDiagonals);
+        }
+
+        [Fact]
         public void ServiceMatrix_ExtractRows()
         {
             //arrange
